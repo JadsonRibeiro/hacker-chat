@@ -8,7 +8,8 @@ export const constants = {
         },
     
         socket: {
-    
+            JOIN_ROOM: 'joinRoom', //Mesmo nome da função no server
+            MESSAGE: 'message'
         }
     }
 }

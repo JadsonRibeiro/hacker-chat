@@ -7,6 +7,14 @@ export default class SockerServer {
         this.port =  port;
     }
 
+    async sendMessage(socket, event, message) {
+        const data = JSON.stringify({ event, message });
+
+        // \n serve para separar as mensagens recebidas caso várias
+        // cheguem ao mesmo tempo
+        socket.write(`${data}\n`);
+    }
+
     async initialize(eventEmitter) {
         const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/plan' });
