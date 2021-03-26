@@ -18,6 +18,13 @@ export default class EventManager {
         })
     }
 
+    message(message) {
+        this.componentEmitter.emit(
+            constants.events.app.MESSAGE_RECEIVED,
+            message
+        )
+    }
+
     updateUsers(users) {
         const connectedUsers = users;
         connectedUsers.forEach(({ id, userName }) => this.#allUsers.set(id, userName));
@@ -29,6 +36,14 @@ export default class EventManager {
         this.#allUsers.set(user.id, user.userName);
         this.#updateUsersComponent();
         this.#updateActivityLogComponent(`${user.userName} joined!`);
+    }
+
+    disconnectUser(user) {
+        const { userName, id } = user;
+        this.#allUsers.delete(id);
+
+        this.#updateActivityLogComponent(`${userName} left!`);
+        this.#updateUsersComponent();
     }
 
     #emitComponentUpdate(event, message) {

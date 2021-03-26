@@ -8,4 +8,5 @@ Project developed on ["Semana Javascript Experts"](https://javascriptexpert.com.
 - WebSocket Protocol
 - Design Pattern Builder
 - Event-driven programming
-
+- Deploy on Heroku
+- Publish on NPM Registry
